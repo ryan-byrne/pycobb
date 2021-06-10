@@ -1,4 +1,5 @@
-import pycobb, time, argparse, sys, os, pycobb, time, datetime
+import time, argparse, sys, os, datetime, requests
+from pycobb import *
 import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
 
@@ -56,7 +57,9 @@ def main():
     if args.command == 'get':
         params = vars(args).copy()
         [params.pop(key) for key in ['command', 'save', 'print', 'plot']]
-        pitches = pycobb.get(**params)
+        if all(x is None for x in params.values()):
+            raise ValueError('Search cannot be empty')
+        pitches = get(**params)
         _ = print(pitches) if args.print else None
         _ = pitches.to_csv(args.save[0]) if args.save else None
         _ = _plot(pitches, *args.plot) if args.plot else None
@@ -65,6 +68,20 @@ def main():
 
     elif args.command == 'test':
         pass
+
+    elif args.command == 'update':
+        url = 'https://raw.githubusercontent.com/chadwickbureau/register/master/data/people.csv'
+        r = requests.get(url)
+        df = pd.read_csv(io.StringIO(r.text), dtype=PLAYER_TYPES)
+        ignore = [  'mlb_managed_first', 'mlb_managed_last',  'col_managed_first',
+                    'col_managed_last', 'pro_umpired_first', 'pro_umpired_last',
+                    'mlb_umpired_first', 'mlb_umpired_last', 'pro_managed_first',
+                    'pro_managed_last', 'col_played_first', 'col_played_last',
+                    'pro_played_first', 'pro_played_last', 'key_npb','key_sr_nfl',
+                    'key_sr_nba','key_sr_nhl',
+        ]
+        df = df[df['mlb_played_first'].notna()].drop(ignore, axis='columns')
+        df.to_csv(f"{os.path.dirname(utils.__file__)}/players.csv")
 
     else:
         raise parser.error(f"Invalid command: '{args.command}'")

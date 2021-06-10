@@ -1,4 +1,6 @@
 .DS_STORE
 *.pyc
 pycobb.egg*
-env
+/env
+/build
+/dist

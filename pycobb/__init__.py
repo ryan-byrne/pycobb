@@ -107,8 +107,8 @@ def get_player_ids(player_info=None):
             name = player.split(' ') if " " in player else player.split('+')
             index = int(name[2]) if len(name) > 2 else None
             players.append({'name_first':name[0],'name_last':name[1],'index':index})
-        df = pd.read_csv(f'{os.path.dirname(utils.__file__)}/player_ids.csv')
+        df = pd.read_csv(f'{os.path.dirname(utils.__file__)}/players.csv')
         return _player_search(df, players)
     else:
-        df = pd.read_csv(f'{os.path.dirname(utils.__file__)}/player_ids.csv')
+        df = pd.read_csv(f'{os.path.dirname(utils.__file__)}/players.csv')
         return _player_search(df, player_info)

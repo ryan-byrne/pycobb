@@ -14,10 +14,10 @@ setup(
     packages=find_packages(),
     include_package_data=True,
     install_requires=[
-        'pandas', 'requests'
+        'pandas', 'requests', 'matplotlib'
     ],
     zip_safe=False,
-    entry_points = {"console_scripts": ["pycobb = scripts:main"]},
+    entry_points = {"console_scripts": ["pycobb = pycobb.cli:main"]},
     long_description=long_description,
     long_description_content_type='text/markdown',
     python_requires='>3.5',
