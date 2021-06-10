@@ -1,4 +1,4 @@
-# PyCobb
+# ![Alt text](/files/pycobb.png?raw=true "PyCobb")
 
 * [Report Issues and Bugs](https://github.com/ryan-byrne/pycobb/issues/)
 * Check out the [Documentation](https://pycobb.readthedocs.io/en/latest/)
@@ -61,5 +61,3 @@ Returns:
 ### Additional Search Parameters
 
 For a full list of search parameters, [review the documentation](example.com)
-
-
