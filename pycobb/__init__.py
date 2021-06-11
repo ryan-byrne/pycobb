@@ -69,23 +69,55 @@ def get(  player_type="pitcher", min_results=0, group_by="name", columns=None,
     pd.to_datetime(df['game_date'])
     return df[columns] if columns else df
 
-def _find_player(df, search_dict):
+def _player_str_to_dict(search_str):
+
+    search_dict = {}
+
+    search_list = search_str.split(' ')
+    if '.' in search_list[0] and '.' in search_list[1]:
+        search_dict['name_first'] = f"{search_list[0]} {search_list[1]}"
+        search_dict['name_last'] = search_list[2]
+    elif '.' in search_list[0]:
+        n = search_list[0].split('.')
+        search_dict['name_first'] = f"{n[0]}. {n[1]}."
+        search_dict['name_last'] = search_list[1]
+    else:
+        search_dict['name_first'] = search_list[0]
+        search_dict['name_last'] = search_list[1]
+
+    try:
+        search_dict['index'] = int(search_list[-1])
+    except ValueError:
+        search_dict['index'] = None
+
+    return search_dict
+
+def _find_player(df, search):
+
+    search_dict = _player_str_to_dict(search) if isinstance(search, str) else search
+
     for key, val in search_dict.items():
+        # Filter DataFrame for specified values
         if key == 'index':
             continue
         df = df[df[key]==val]
     if df.empty:
+        # Unable to find any entries
         traits = "".join([f"{k}={v}, " for k,v in search_dict.items()])
         raise ValueError(f"Unable to find player with {traits}")
     elif df.shape[0] > 1 and search_dict['index'] == None:
+        # Too many entries and index not specified
         traits = "".join([f"{k}={v}, " for k,v in search_dict.items()])
-        ids = ", ".join(str(id) for id in df['key_mlbam'].to_list())
-        raise ValueError(f"Your player search ({traits}) was too vague. Found too many players. \
-        \n To specify which player, try adding an index (name_first=Mariano, index=0) \
-        \n Or you could try using the player's id: {ids}")
+        players = "\n ".join(f"{i} {p['name_first']} {p['name_last']}, {p['mlb_played_first']}-{p['mlb_played_last']}, {int(p['key_mlbam'])}" for i, (_, p) in enumerate(df.iterrows()))
+        raise ValueError(f"Your player search ({traits}) was too vague.\
+        \n Try adding an index (name_first=Pedro, name_last=Martinez, index=0) \
+        \n Or using the player's id.\
+        \n {players}")
     elif df.shape[0] > 1:
+        # Index specifed with name
         return int(df.iloc[search_dict['index']]['key_mlbam'])
     else:
+        # Only one name found, return ID
         return int(df['key_mlbam'])
 
 def _player_search(df, player_info):
@@ -95,20 +127,15 @@ def _player_search(df, player_info):
     else:
         return _find_player(df, player_info)
 
-def get_player_ids(player_info=None):
+def get_player_ids(player_info):
 
     if isinstance(player_info, int):
+        # Simply an MLB ID
         return player_info
     elif isinstance(player_info, list) and isinstance(player_info[0], int):
+        # Simply a list of MLB IDs
         return [p for p in player_info]
-    elif isinstance(player_info, list) and isinstance(player_info[0], str):
-        players = []
-        for player in player_info:
-            name = player.split(' ') if " " in player else player.split('+')
-            index = int(name[2]) if len(name) > 2 else None
-            players.append({'name_first':name[0],'name_last':name[1],'index':index})
-        df = pd.read_csv(f'{os.path.dirname(utils.__file__)}/players.csv')
-        return _player_search(df, players)
     else:
+        # List of strings
         df = pd.read_csv(f'{os.path.dirname(utils.__file__)}/players.csv')
         return _player_search(df, player_info)

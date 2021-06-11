@@ -769,7 +769,7 @@ PLAYER_TYPES = {
     "key_retro":str,
     "key_bbref":str,
     "key_bbref_minors":str,
-    "key_fangraphs":float,
+    "key_fangraphs":"Int64",
     "key_npb":str,
     "key_sr_nfl":str,
     "key_sr_nba":str,
