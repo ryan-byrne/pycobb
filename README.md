@@ -1,4 +1,4 @@
-<p align="center"><img src="/files/pycobb.png" width="200"/><p>
+<p align="center"><img src="https://raw.githubusercontent.com/ryan-byrne/pycobb/main/files/pycobb.png" width="200"/><p>
 
 * [Report Issues and Bugs](https://github.com/ryan-byrne/pycobb/issues/)
 * Check out the [Documentation](https://pycobb.readthedocs.io/en/latest/)
