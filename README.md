@@ -60,4 +60,4 @@ Returns:
 
 ### Additional Search Parameters
 
-For a full list of search parameters, [review the documentation](example.com)
+For a full list of search parameters, [review the documentation](https://pycobb.readthedocs.io/en/latest/)

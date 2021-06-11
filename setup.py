@@ -30,6 +30,7 @@ setup(
         "Development Status :: 4 - Beta"
     ],
     project_urls={
+        "Documentation":"https://pycobb.readthedocs.io/en/latest/",
         "Bug Reports":"https://github.com/ryan-byrne/pycobb/issues"
     },
 )
