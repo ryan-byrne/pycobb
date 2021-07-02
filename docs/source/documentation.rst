@@ -3,6 +3,9 @@ Documentation
 
 .. module:: pycobb
 
+.. toctree::
+ :maxdepth: 2
+
 Python Functions
 ----------------
 

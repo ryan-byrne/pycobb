@@ -33,3 +33,6 @@ Or directly from the command line:
 .. code-block:: console
 
   pycobb -p "Clayton Kershaw" -y 2020 --print
+
+.. toctree::
+ :maxdepth: 2

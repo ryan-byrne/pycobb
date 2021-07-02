@@ -18,3 +18,10 @@ Dive In
 
  intro
  documentation
+
+Indices and tables
+------------------
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`
