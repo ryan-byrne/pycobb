@@ -4,16 +4,11 @@ Documentation
 .. toctree::
  :maxdepth: 2
 
-.. module:: pycobb
+Python Package
+--------------
 
-Python Functions
-----------------
-
-.. autofunction:: update
-
-.. autofunction:: get
-
-.. autofunction:: get_player_ids
+.. automodule:: pycobb
+  :members:
 
 Command Line Interface
 ----------------------

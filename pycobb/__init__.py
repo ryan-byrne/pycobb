@@ -15,7 +15,7 @@ def update(save=True):
         >>> import pycobb
         >>> pycobb.update()
 
-    |"""
+    """
     url = 'https://raw.githubusercontent.com/chadwickbureau/register/master/data/people.csv'
     r = requests.get(url)
     df = pd.read_csv(io.StringIO(r.text), dtype=PLAYER_TYPES)
@@ -33,9 +33,7 @@ def get(  player_type="pitcher", min_results=0, group_by="name", columns=None,
             sort_col="pitches", player_event_sort="pitch_number_thisgame",
             sort_order="desc", min_pas=0, type="details", **kwargs):
 
-    """
-
-    Get `Pandas DataFrame <https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html>`_ of pitch data given the specified search parameters.
+    """Get `Pandas DataFrame <https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html>`_ of pitch data given the specified search parameters.
 
     :param pitchers: List of MLB IDs (int) or `Player Names`_ (str)
     :param batters: List of MLB IDs (int) or `Player Names`_ (str)
@@ -68,16 +66,24 @@ def get(  player_type="pitcher", min_results=0, group_by="name", columns=None,
     :param flags: `Special Flags`_ (str) for the pitch
     :param batted_ball_type: List of Batted Ball Types (options: fly ball, popup, line drive, ground ball)
     :param inning: Integer... duh
-    
+
 
     Python Usage::
 
         >>> import pycobb
-        >>> df = pycobb.get(pitchers=['Clayton+Kershaw'], years=[2020])
+        >>> pycobb.get(pitchers=["Clayton+Kershaw"], years=["2020"], pitch_types=['CH'])
+          pitch_type   game_date  release_speed  release_pos_x  ...  of_fielding_alignment spin_axis  delta_home_win_exp  delta_run_exp
+        0         CH  2020-10-15           87.4           1.44  ...               Standard       219                 0.0          0.051
+
+        1         CH  2020-10-15           86.7           1.42  ...               Standard       218                 0.0         -0.050
+        2         CH  2020-08-08           87.8           1.79  ...               Standard       143                 0.0          0.020
+        3         CH  2020-08-08           86.0           1.66  ...               Standard       142                 0.0          0.020
+
+        [4 rows x 92 columns]
 
     CLI Usage::
 
-        > pycobb get -p Clayton+Kershaw -y 2020
+        > pycobb get -p Clayton+Kershaw -y 2020 -t CH
 
     |"""
 
@@ -209,7 +215,14 @@ def get_player_ids(player_info):
 
     :param player_info: List or dictionary
 
-    """
+    Usage:
+
+        >>> import pycobb
+        >>> search = {"name_first":"Ty","name_last":"Cobb"}
+        >>> pycobb.get_player_ids(search)
+        112431
+
+    |"""
 
     if isinstance(player_info, int):
         # Simply an MLB ID

@@ -36,29 +36,8 @@
 <h1>Documentation<a class="headerlink" href="#documentation" title="Permalink to this headline">¶</a></h1>
 <div class="toctree-wrapper compound">
 </div>
-<span class="target" id="module-pycobb"></span><section id="python-functions">
-<h2>Python Functions<a class="headerlink" href="#python-functions" title="Permalink to this headline">¶</a></h2>
-<dl class="py function">
-<dt class="sig sig-object py" id="pycobb.update">
-<span class="sig-prename descclassname"><span class="pre">pycobb.</span></span><span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">save</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pycobb.update" title="Permalink to this definition">¶</a></dt>
-<dd><p>Update local
-<a class="reference external" href="https://raw.githubusercontent.com/ryan-byrne/pycobb/main/pycobb/utils/players.csv">players.csv</a>
-file using data from the <a class="reference external" href="https://github.com/chadwickbureau">Chadwick Baseball Bureau</a></p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>save</strong> – (optional) Chose to save the update locally</p>
-</dd>
-</dl>
-<p>Usage:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pycobb</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">pycobb</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
-</pre></div>
-</div>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
-</dd></dl>
-
+<section id="module-pycobb">
+<span id="python-package"></span><h2>Python Package<a class="headerlink" href="#module-pycobb" title="Permalink to this headline">¶</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="pycobb.get">
 <span class="sig-prename descclassname"><span class="pre">pycobb.</span></span><span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">player_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'pitcher'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_results</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group_by</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'name'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">columns</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort_col</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'pitches'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">player_event_sort</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'pitch_number_thisgame'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort_order</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'desc'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_pas</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'details'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pycobb.get" title="Permalink to this definition">¶</a></dt>
@@ -102,11 +81,19 @@ file using data from the <a class="reference external" href="https://github.com/
 </dl>
 <p>Python Usage:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pycobb</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">pycobb</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">pitchers</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Clayton+Kershaw&#39;</span><span class="p">],</span> <span class="n">years</span><span class="o">=</span><span class="p">[</span><span class="mi">2020</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pycobb</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">pitchers</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Clayton+Kershaw&quot;</span><span class="p">],</span> <span class="n">years</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;2020&quot;</span><span class="p">],</span> <span class="n">pitch_types</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;CH&#39;</span><span class="p">])</span>
+<span class="go">  pitch_type   game_date  release_speed  release_pos_x  ...  of_fielding_alignment spin_axis  delta_home_win_exp  delta_run_exp</span>
+<span class="go">0         CH  2020-10-15           87.4           1.44  ...               Standard       219                 0.0          0.051</span>
+
+<span class="go">1         CH  2020-10-15           86.7           1.42  ...               Standard       218                 0.0         -0.050</span>
+<span class="go">2         CH  2020-08-08           87.8           1.79  ...               Standard       143                 0.0          0.020</span>
+<span class="go">3         CH  2020-08-08           86.0           1.66  ...               Standard       142                 0.0          0.020</span>
+
+<span class="go">[4 rows x 92 columns]</span>
 </pre></div>
 </div>
 <p>CLI Usage:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">pycobb</span> <span class="n">get</span> <span class="o">-</span><span class="n">p</span> <span class="n">Clayton</span><span class="o">+</span><span class="n">Kershaw</span> <span class="o">-</span><span class="n">y</span> <span class="mi">2020</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">pycobb</span> <span class="n">get</span> <span class="o">-</span><span class="n">p</span> <span class="n">Clayton</span><span class="o">+</span><span class="n">Kershaw</span> <span class="o">-</span><span class="n">y</span> <span class="mi">2020</span> <span class="o">-</span><span class="n">t</span> <span class="n">CH</span>
 </pre></div>
 </div>
 <div class="line-block">
@@ -123,6 +110,34 @@ file using data from the <a class="reference external" href="https://github.com/
 <dd class="field-odd"><p><strong>player_info</strong> – List or dictionary</p>
 </dd>
 </dl>
+<p>Usage:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pycobb</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">search</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;name_first&quot;</span><span class="p">:</span><span class="s2">&quot;Ty&quot;</span><span class="p">,</span><span class="s2">&quot;name_last&quot;</span><span class="p">:</span><span class="s2">&quot;Cobb&quot;</span><span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pycobb</span><span class="o">.</span><span class="n">get_player_ids</span><span class="p">(</span><span class="n">search</span><span class="p">)</span>
+<span class="go">112431</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pycobb.update">
+<span class="sig-prename descclassname"><span class="pre">pycobb.</span></span><span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">save</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pycobb.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update local
+<a class="reference external" href="https://raw.githubusercontent.com/ryan-byrne/pycobb/main/pycobb/utils/players.csv">players.csv</a>
+file using data from the <a class="reference external" href="https://github.com/chadwickbureau">Chadwick Baseball Bureau</a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>save</strong> – (optional) Chose to save the update locally</p>
+</dd>
+</dl>
+<p>Usage:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pycobb</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pycobb</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+</pre></div>
+</div>
 </dd></dl>
 
 </section>
@@ -1259,7 +1274,7 @@ a string, separated by either a ‘+’ or a space (i.e. <code class="docutils l
 <li class="toctree-l1"><a class="reference internal" href="intro.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="intro.html#quickstart">Quickstart</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Documentation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#python-functions">Python Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-pycobb">Python Package</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#command-line-interface">Command Line Interface</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#columns">Columns</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#glossary">Glossary</a></li>
