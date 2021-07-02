@@ -8,6 +8,7 @@ Python Package
 --------------
 
 .. automodule:: pycobb
+  :imported-members:
   :members:
 
 Command Line Interface
