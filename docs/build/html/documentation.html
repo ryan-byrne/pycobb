@@ -1,0 +1,1312 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Documentation &#8212; pycobb 0.0.3 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Welcome" href="index.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="module-pycobb">
+<span id="documentation"></span><h1>Documentation<a class="headerlink" href="#module-pycobb" title="Permalink to this headline">¶</a></h1>
+<section id="python-functions">
+<h2>Python Functions<a class="headerlink" href="#python-functions" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="pycobb.update">
+<span class="sig-prename descclassname"><span class="pre">pycobb.</span></span><span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">save</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pycobb.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update local
+<a class="reference external" href="https://raw.githubusercontent.com/ryan-byrne/pycobb/main/pycobb/utils/players.csv">players.csv</a>
+file using data from the <a class="reference external" href="https://github.com/chadwickbureau">Chadwick Baseball Bureau</a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>save</strong> – (optional) Chose to save the update locally</p>
+</dd>
+</dl>
+<p>Usage:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pycobb</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pycobb</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pycobb.get">
+<span class="sig-prename descclassname"><span class="pre">pycobb.</span></span><span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">player_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'pitcher'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_results</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">group_by</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'name'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">columns</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort_col</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'pitches'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">player_event_sort</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'pitch_number_thisgame'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort_order</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'desc'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_pas</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'details'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pycobb.get" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html">Pandas DataFrame</a> of pitch data given the specified search parameters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pitchers</strong> – List of MLB IDs (int) or <a class="reference internal" href="#player-names">Player Names</a> (str)</p></li>
+<li><p><strong>batters</strong> – List of MLB IDs (int) or <a class="reference internal" href="#player-names">Player Names</a> (str)</p></li>
+<li><p><strong>pitch_types</strong> – List of ‘Pitch Types’_ (str)</p></li>
+<li><p><strong>years</strong> – List of years (int) to be searched</p></li>
+<li><p><strong>columns</strong> – List of specified <a class="reference internal" href="#columns">Columns</a> to return in <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html">Pandas DataFrame</a></p></li>
+<li><p><strong>date_range</strong> – List of two dates to be searched between (i.e. <code class="docutils literal notranslate"><span class="pre">[&quot;2020-08-01&quot;,</span> <span class="pre">&quot;2020-09-01&quot;]</span></code>)</p></li>
+<li><p><strong>pa_result</strong> – List of <a class="reference internal" href="#pa-results">PA Results</a></p></li>
+<li><p><strong>game_type</strong> – List of <a class="reference internal" href="#game-types">Game Types</a></p></li>
+<li><p><strong>pitch_result</strong> – List of <a class="reference internal" href="#pitch-results">Pitch Results</a></p></li>
+<li><p><strong>gameday_zone</strong> – List of <a class="reference internal" href="#gameday-zones">Gameday Zones</a> (int between 1-14)</p></li>
+<li><p><strong>stadium</strong> – List of Stadium Codes (str), found from <a class="reference internal" href="#teams">Teams</a></p></li>
+<li><p><strong>batted_ball_location</strong> – List of Batted Ball Locations (int from 1-9)</p></li>
+<li><p><strong>attack_zone</strong> – List of <a class="reference internal" href="#attack-zones">Attack Zones</a> (int)</p></li>
+<li><p><strong>batted_ball_direction</strong> – List of Batted Ball Directions (str, options:Pull, Straightaway, Opposite)</p></li>
+<li><p><strong>count</strong> – List of <a class="reference internal" href="#counts">Counts</a> (str)</p></li>
+<li><p><strong>situation</strong> – List of <a class="reference internal" href="#situations">Situations</a> (str)</p></li>
+<li><p><strong>player_type</strong> – List of Player Type (str) (i.e. Pitcher, Batter, or fielder_6 (for SS))</p></li>
+<li><p><strong>outs</strong> – (int) 0, 1, or 2 (obviously)</p></li>
+<li><p><strong>opponent</strong> – <a class="reference internal" href="#teams">Teams</a> Abbreviation for the opposing team of the Pitcher <code class="docutils literal notranslate"><span class="pre">American+League</span></code> or <code class="docutils literal notranslate"><span class="pre">National+League</span></code></p></li>
+<li><p><strong>pitcher_throws</strong> – <code class="docutils literal notranslate"><span class="pre">'R'</span></code> or <code class="docutils literal notranslate"><span class="pre">'L'</span></code> (str)</p></li>
+<li><p><strong>batter_stands</strong> – <code class="docutils literal notranslate"><span class="pre">'R'</span></code> or <code class="docutils literal notranslate"><span class="pre">'L'</span></code> (str)</p></li>
+<li><p><strong>quality_of_contact</strong> – (int) from 1-6 indicating <a class="reference internal" href="#quality-of-contact">Quality of Contact</a></p></li>
+<li><p><strong>if_alignment</strong> – List of Codes (int) from 1-3 indicating <a class="reference internal" href="#if-alignment">IF Alignment</a></p></li>
+<li><p><strong>team</strong> – <a class="reference internal" href="#teams">Teams</a> Abbreviation for the team of the Pitcher. Can also be <code class="docutils literal notranslate"><span class="pre">American+League</span></code> or <code class="docutils literal notranslate"><span class="pre">National+League</span></code></p></li>
+<li><p><strong>position</strong> – Position (str) (i.e. IF, OF, SP, RP, or Fielder Number)</p></li>
+<li><p><strong>of_alignment</strong> – List of Codes (int) from 1-4 indicating <a class="reference internal" href="#of-alignment">OF Alignment</a></p></li>
+<li><p><strong>runners_on</strong> – Code (int) from 1-9 indicating <a class="reference internal" href="#runners-on">Runners On</a></p></li>
+<li><p><strong>home_or_away</strong> – <code class="docutils literal notranslate"><span class="pre">'Home'</span></code> or <code class="docutils literal notranslate"><span class="pre">'Away'</span></code> of Pitcher’s team</p></li>
+<li><p><strong>flags</strong> – <a class="reference internal" href="#special-flags">Special Flags</a> (str) for the pitch</p></li>
+<li><p><strong>batted_ball_type</strong> – List of Batted Ball Types (options: fly ball, popup, line drive, ground ball)</p></li>
+<li><p><strong>inning</strong> – Integer… duh</p></li>
+</ul>
+</dd>
+</dl>
+<p>Python Usage:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pycobb</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">pycobb</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">pitchers</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Clayton+Kershaw&#39;</span><span class="p">],</span> <span class="n">years</span><span class="o">=</span><span class="p">[</span><span class="mi">2020</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>CLI Usage:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">pycobb</span> <span class="n">get</span> <span class="o">-</span><span class="n">p</span> <span class="n">Clayton</span><span class="o">+</span><span class="n">Kershaw</span> <span class="o">-</span><span class="n">y</span> <span class="mi">2020</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pycobb.get_player_ids">
+<span class="sig-prename descclassname"><span class="pre">pycobb.</span></span><span class="sig-name descname"><span class="pre">get_player_ids</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">player_info</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pycobb.get_player_ids" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a list of MLB IDs given specified player information.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>player_info</strong> – List or dictionary</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="command-line-interface">
+<h2>Command Line Interface<a class="headerlink" href="#command-line-interface" title="Permalink to this headline">¶</a></h2>
+<p>Get Pitch Data from Baseball Savant directly from the command line</p>
+<p>Usage:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">pycobb</span> <span class="o">-</span><span class="n">h</span>
+</pre></div>
+</div>
+<p>Positional Arguments:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="n">run</span><span class="p">,</span><span class="n">update</span><span class="p">,</span><span class="n">test</span><span class="p">}</span>     <span class="n">Command</span> <span class="n">to</span> <span class="n">be</span> <span class="n">Run</span>
+</pre></div>
+</div>
+<p>Optional Arguments:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span><span class="n">h</span><span class="p">,</span> <span class="o">--</span><span class="n">help</span>            <span class="n">show</span> <span class="n">this</span> <span class="n">help</span> <span class="n">message</span> <span class="ow">and</span> <span class="n">exit</span>
+<span class="o">-</span><span class="n">s</span> <span class="n">SAVE</span><span class="p">,</span> <span class="o">--</span><span class="n">save</span> <span class="n">SAVE</span>  <span class="n">save</span> <span class="n">data</span> <span class="n">to</span> <span class="n">a</span> <span class="n">specified</span> <span class="n">file</span> <span class="n">path</span>
+<span class="o">-</span><span class="n">d</span> <span class="n">DATE_RANGE</span> <span class="n">DATE_RANGE</span>
+                      <span class="nb">range</span> <span class="n">of</span> <span class="n">dates</span> <span class="n">to</span> <span class="n">be</span> <span class="n">searched</span> <span class="n">i</span><span class="o">.</span><span class="n">e</span><span class="o">.</span> <span class="mi">2021</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">03</span> <span class="mi">2021</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">08</span>
+<span class="o">-</span><span class="n">p</span> <span class="n">PITCHERS</span> <span class="p">[</span><span class="n">PITCHERS</span> <span class="o">...</span><span class="p">]</span>
+                      <span class="nb">list</span> <span class="n">of</span> <span class="n">pitchers</span> <span class="n">to</span> <span class="n">search</span> <span class="p">(</span><span class="n">MLB</span> <span class="n">ID</span> <span class="ow">or</span> <span class="n">name</span><span class="p">)</span><span class="o">.</span> <span class="n">ex</span><span class="p">:</span> <span class="o">-</span><span class="n">p</span> <span class="mi">124692</span> <span class="mi">506433</span> <span class="ow">or</span> <span class="o">-</span><span class="n">p</span> <span class="n">Cy</span><span class="o">+</span><span class="n">Young</span> <span class="n">Yu</span><span class="o">+</span><span class="n">Darvish</span>
+
+<span class="o">-</span><span class="n">b</span> <span class="n">BATTERS</span> <span class="p">[</span><span class="n">BATTERS</span> <span class="o">...</span><span class="p">]</span>
+                    <span class="nb">list</span> <span class="n">of</span> <span class="n">batters</span> <span class="n">to</span> <span class="n">search</span> <span class="p">(</span><span class="n">MLB</span> <span class="n">ID</span> <span class="ow">or</span> <span class="n">name</span><span class="p">):</span> <span class="n">ex</span><span class="p">:</span> <span class="o">-</span><span class="n">b</span> <span class="mi">112431</span> <span class="mi">116539</span> <span class="ow">or</span> <span class="o">-</span><span class="n">b</span> <span class="n">Ty</span><span class="o">+</span><span class="n">Cobb</span> <span class="n">Derek</span><span class="o">+</span><span class="n">Jeter</span>
+<span class="o">-</span><span class="n">t</span> <span class="n">PITCH_TYPES</span> <span class="p">[</span><span class="n">PITCH_TYPES</span> <span class="o">...</span><span class="p">]</span>
+                      <span class="nb">list</span> <span class="n">of</span> <span class="n">pitch</span> <span class="n">types</span><span class="o">.</span> <span class="n">e</span><span class="o">.</span><span class="n">g</span><span class="o">.</span> <span class="o">-</span><span class="n">t</span> <span class="n">FT</span> <span class="n">CU</span>
+<span class="o">-</span><span class="n">y</span> <span class="n">YEARS</span> <span class="p">[</span><span class="n">YEARS</span> <span class="o">...</span><span class="p">]</span>  <span class="n">values</span> <span class="ow">or</span> <span class="nb">range</span> <span class="n">of</span> <span class="n">years</span>
+<span class="o">-</span><span class="n">c</span> <span class="n">COLUMNS</span> <span class="p">[</span><span class="n">COLUMNS</span> <span class="o">...</span><span class="p">]</span>
+
+                      <span class="n">Columns</span> <span class="n">to</span> <span class="k">return</span>
+<span class="o">--</span><span class="n">team</span> <span class="n">TEAM</span>           <span class="n">Team</span> <span class="n">code</span> <span class="n">of</span> <span class="n">pitcher</span>
+<span class="o">--</span><span class="n">opp</span> <span class="n">OPPONENT</span>        <span class="n">Team</span> <span class="n">code</span> <span class="n">of</span> <span class="n">pitcher</span> <span class="n">opponent</span>
+<span class="o">--</span><span class="nb">print</span>               <span class="n">Print</span> <span class="n">the</span> <span class="n">dataframe</span> <span class="n">when</span> <span class="n">complete</span>
+<span class="o">--</span><span class="n">plot</span> <span class="n">xaxis</span> <span class="n">yaxis</span>    <span class="n">Plot</span> <span class="n">the</span> <span class="n">values</span> <span class="n">of</span> <span class="n">two</span> <span class="n">columns</span>
+</pre></div>
+</div>
+</section>
+<section id="columns">
+<h2>Columns<a class="headerlink" href="#columns" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 23%" />
+<col style="width: 72%" />
+<col style="width: 5%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Column</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Type</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>pitch_type</p></td>
+<td><p>The type of pitch derived from Statcast.</p></td>
+<td><p>str</p></td>
+</tr>
+<tr class="row-odd"><td><p>game_date</p></td>
+<td><p>Date of the Game.</p></td>
+<td><p>str</p></td>
+</tr>
+<tr class="row-even"><td><p>release_speed</p></td>
+<td><p>Pitch velocities from 2008-16 are via Pitch F/X and adjusted to roughly out-of-hand release point.</p></td>
+<td><p>float</p></td>
+</tr>
+<tr class="row-odd"><td><p>release_pos_x</p></td>
+<td><p>Horizontal Release Position of the ball measured in feet from the catcher’s perspective.</p></td>
+<td><p>float</p></td>
+</tr>
+<tr class="row-even"><td><p>release_pos_z</p></td>
+<td><p>Vertical Release Position of the ball measured in feet from the catcher’s perspective.</p></td>
+<td><p>float</p></td>
+</tr>
+<tr class="row-odd"><td><p>player_name</p></td>
+<td><p>Player’s name tied to the event of the search.</p></td>
+<td><p>str</p></td>
+</tr>
+<tr class="row-even"><td><p>batter</p></td>
+<td><p>MLB Player Id tied to the play event.</p></td>
+<td><p>float</p></td>
+</tr>
+<tr class="row-odd"><td><p>pitcher</p></td>
+<td><p>MLB Player Id tied to the play event.</p></td>
+<td><p>float</p></td>
+</tr>
+<tr class="row-even"><td><p>events</p></td>
+<td><p>Event of the resulting Plate Appearance.</p></td>
+<td><p>str</p></td>
+</tr>
+<tr class="row-odd"><td><p>description</p></td>
+<td><p>Description of the resulting pitch.</p></td>
+<td><p>str</p></td>
+</tr>
+<tr class="row-even"><td><p>spin_dir</p></td>
+<td><ul class="simple">
+<li><p>Deprecated field from the old tracking system.</p></li>
+</ul>
+</td>
+<td><p>float</p></td>
+</tr>
+<tr class="row-odd"><td><p>spin_rate_deprecated</p></td>
+<td><ul class="simple">
+<li><p>Deprecated field from the old tracking system. Replaced by release_spin</p></li>
+</ul>
+</td>
+<td><p>float</p></td>
+</tr>
+<tr class="row-even"><td><p>break_angle_deprecated</p></td>
+<td><ul class="simple">
+<li><p>Deprecated field from the old tracking system.</p></li>
+</ul>
+</td>
+<td><p>float</p></td>
+</tr>
+<tr class="row-odd"><td><p>break_length_deprecated</p></td>
+<td><ul class="simple">
+<li><p>Deprecated field from the old tracking system.</p></li>
+</ul>
+</td>
+<td><p>float</p></td>
+</tr>
+<tr class="row-even"><td><p>zone</p></td>
+<td><p>Zone location of the ball when it crosses the plate from the catcher’s perspective.</p></td>
+<td><p>Int64</p></td>
+</tr>
+<tr class="row-odd"><td><p>des</p></td>
+<td><p>Plate appearance description from game day.</p></td>
+<td><p>str</p></td>
+</tr>
+<tr class="row-even"><td><p>game_type</p></td>
+<td><p>Type of Game. E = Exhibition</p></td>
+<td><p>str</p></td>
+</tr>
+<tr class="row-odd"><td><p>stand</p></td>
+<td><p>Side of the plate batter is standing.</p></td>
+<td><p>str</p></td>
+</tr>
+<tr class="row-even"><td><p>p_throws</p></td>
+<td><p>Hand pitcher throws with.</p></td>
+<td><p>str</p></td>
+</tr>
+<tr class="row-odd"><td><p>home_team</p></td>
+<td><p>Abbreviation of home team.</p></td>
+<td><p>str</p></td>
+</tr>
+<tr class="row-even"><td><p>away_team</p></td>
+<td><p>Abbreviation of away team.</p></td>
+<td><p>str</p></td>
+</tr>
+<tr class="row-odd"><td><p>type</p></td>
+<td><p>Short hand of pitch result.</p></td>
+<td><p>str</p></td>
+</tr>
+<tr class="row-even"><td><p>hit_location</p></td>
+<td><p>Position of first fielder to touch the ball.</p></td>
+<td><p>Int64</p></td>
+</tr>
+<tr class="row-odd"><td><p>bb_type</p></td>
+<td><p>Batted ball type</p></td>
+<td><p>str</p></td>
+</tr>
+<tr class="row-even"><td><p>balls</p></td>
+<td><p>Pre-pitch number of balls in count.</p></td>
+<td><p>Int64</p></td>
+</tr>
+<tr class="row-odd"><td><p>strikes</p></td>
+<td><p>Pre-pitch number of strikes in count.</p></td>
+<td><p>Int64</p></td>
+</tr>
+<tr class="row-even"><td><p>game_year</p></td>
+<td><p>Year game took place.</p></td>
+<td><p>Int64</p></td>
+</tr>
+<tr class="row-odd"><td><p>pfx_x</p></td>
+<td><p>Horizontal movement in feet from the catcher’s perspective.</p></td>
+<td><p>float</p></td>
+</tr>
+<tr class="row-even"><td><p>pfx_z</p></td>
+<td><p>Vertical movement in feet from the catcher’s perpsective.</p></td>
+<td><p>float</p></td>
+</tr>
+<tr class="row-odd"><td><p>plate_x</p></td>
+<td><p>Horizontal position of the ball when it crosses home plate from the catcher’s perspective.</p></td>
+<td><p>float</p></td>
+</tr>
+<tr class="row-even"><td><p>plate_z</p></td>
+<td><p>Vertical position of the ball when it crosses home plate from the catcher’s perspective.</p></td>
+<td><p>float</p></td>
+</tr>
+<tr class="row-odd"><td><p>on_3b</p></td>
+<td><p>Pre-pitch MLB Player Id of Runner on 3B.</p></td>
+<td><p>Int64</p></td>
+</tr>
+<tr class="row-even"><td><p>on_2b</p></td>
+<td><p>Pre-pitch MLB Player Id of Runner on 2B.</p></td>
+<td><p>Int64</p></td>
+</tr>
+<tr class="row-odd"><td><p>on_1b</p></td>
+<td><p>Pre-pitch MLB Player Id of Runner on 1B.</p></td>
+<td><p>Int64</p></td>
+</tr>
+<tr class="row-even"><td><p>outs_when_up</p></td>
+<td><p>Pre-pitch number of outs.</p></td>
+<td><p>Int64</p></td>
+</tr>
+<tr class="row-odd"><td><p>inning</p></td>
+<td><p>Pre-pitch inning number.</p></td>
+<td><p>Int64</p></td>
+</tr>
+<tr class="row-even"><td><p>inning_topbot</p></td>
+<td><p>Pre-pitch top or bottom of inning.</p></td>
+<td><p>str</p></td>
+</tr>
+<tr class="row-odd"><td><p>hc_x</p></td>
+<td><p>Hit coordinate X of batted ball.</p></td>
+<td><p>float</p></td>
+</tr>
+<tr class="row-even"><td><p>hc_y</p></td>
+<td><p>Hit coordinate Y of batted ball.</p></td>
+<td><p>float</p></td>
+</tr>
+<tr class="row-odd"><td><p>tfs_deprecated</p></td>
+<td><ul class="simple">
+<li><p>Deprecated field from old tracking system.</p></li>
+</ul>
+</td>
+<td><p>float</p></td>
+</tr>
+<tr class="row-even"><td><p>tfs_zulu_deprecated</p></td>
+<td><ul class="simple">
+<li><p>Deprecated field from old tracking system.</p></li>
+</ul>
+</td>
+<td><p>float</p></td>
+</tr>
+<tr class="row-odd"><td><p>fielder_2</p></td>
+<td><p>MLB Player Id for catcher.</p></td>
+<td><p>Int64</p></td>
+</tr>
+<tr class="row-even"><td><p>vx0</p></td>
+<td><p>The velocity of the pitch in feet per second in x-dimension determined at y=50 feet.</p></td>
+<td><p>float</p></td>
+</tr>
+<tr class="row-odd"><td><p>vy0</p></td>
+<td><p>The velocity of the pitch in feet per second in y-dimension determined at y=50 feet.</p></td>
+<td><p>float</p></td>
+</tr>
+<tr class="row-even"><td><p>vz0</p></td>
+<td><p>The velocity of the pitch in feet per second in z-dimension determined at y=50 feet.</p></td>
+<td><p>float</p></td>
+</tr>
+<tr class="row-odd"><td><p>ax</p></td>
+<td><p>The acceleration of the pitch in feet per second per second in x-dimension determined at y=50 feet.</p></td>
+<td><p>float</p></td>
+</tr>
+<tr class="row-even"><td><p>ay</p></td>
+<td><p>The acceleration of the pitch in feet per second per second in y-dimension determined at y=50 feet.</p></td>
+<td><p>float</p></td>
+</tr>
+<tr class="row-odd"><td><p>az</p></td>
+<td><p>The acceleration of the pitch in feet per second per second in z-dimension determined at y=50 feet</p></td>
+<td><p>float</p></td>
+</tr>
+<tr class="row-even"><td><p>sz_top</p></td>
+<td><p>Top of the batter’s strike zone set by the operator when the ball is halfway to the plate.</p></td>
+<td><p>float</p></td>
+</tr>
+<tr class="row-odd"><td><p>sz_bot</p></td>
+<td><p>Bottom of the batter’s strike zone set by the operator when the ball is halfway to the plate.</p></td>
+<td><p>float</p></td>
+</tr>
+<tr class="row-even"><td><p>hit_distance</p></td>
+<td><p>Projected hit distance of the batted ball.</p></td>
+<td><p>float</p></td>
+</tr>
+<tr class="row-odd"><td><p>hit_distance_sc</p></td>
+<td><p>Projected hit distance of the batted ball.</p></td>
+<td><p>float</p></td>
+</tr>
+<tr class="row-even"><td><p>launch_speed</p></td>
+<td><p>Exit velocity of the batted ball as tracked by Statcast.</p></td>
+<td><p>float</p></td>
+</tr>
+<tr class="row-odd"><td><p>launch_angle</p></td>
+<td><p>Launch angle of the batted ball as tracked by Statcast.</p></td>
+<td><p>float</p></td>
+</tr>
+<tr class="row-even"><td><p>effective_speed</p></td>
+<td><p>Derived speed based on the the extension of the pitcher’s release.</p></td>
+<td><p>float</p></td>
+</tr>
+<tr class="row-odd"><td><p>release_spin</p></td>
+<td><p>Spin rate of pitch tracked by Statcast.</p></td>
+<td><p>float</p></td>
+</tr>
+<tr class="row-even"><td><p>release_spin_rate</p></td>
+<td><p>Spin rate of pitch tracked by Statcast.</p></td>
+<td><p>float</p></td>
+</tr>
+<tr class="row-odd"><td><p>release_extension</p></td>
+<td><p>Release extension of pitch in feet as tracked by Statcast.</p></td>
+<td><p>float</p></td>
+</tr>
+<tr class="row-even"><td><p>game_pk</p></td>
+<td><p>Unique Id for Game.</p></td>
+<td><p>Int64</p></td>
+</tr>
+<tr class="row-odd"><td><p>fielder_3</p></td>
+<td><p>MLB Player Id for 1B.</p></td>
+<td><p>Int64</p></td>
+</tr>
+<tr class="row-even"><td><p>fielder_4</p></td>
+<td><p>MLB Player Id for 2B.</p></td>
+<td><p>Int64</p></td>
+</tr>
+<tr class="row-odd"><td><p>fielder_5</p></td>
+<td><p>MLB Player Id for 3B.</p></td>
+<td><p>Int64</p></td>
+</tr>
+<tr class="row-even"><td><p>fielder_6</p></td>
+<td><p>MLB Player Id for SS.</p></td>
+<td><p>Int64</p></td>
+</tr>
+<tr class="row-odd"><td><p>fielder_7</p></td>
+<td><p>MLB Player Id for LF.</p></td>
+<td><p>Int64</p></td>
+</tr>
+<tr class="row-even"><td><p>fielder_8</p></td>
+<td><p>MLB Player Id for CF.</p></td>
+<td><p>Int64</p></td>
+</tr>
+<tr class="row-odd"><td><p>fielder_9</p></td>
+<td><p>MLB Player Id for RF.</p></td>
+<td><p>Int64</p></td>
+</tr>
+<tr class="row-even"><td><p>release_pos_y</p></td>
+<td><p>Release position of pitch measured in feet from the catcher’s perspective.</p></td>
+<td><p>float</p></td>
+</tr>
+<tr class="row-odd"><td><p>estimated_ba_using_speedangle</p></td>
+<td><p>Estimated Batting Avg based on launch angle and exit velocity.</p></td>
+<td><p>float</p></td>
+</tr>
+<tr class="row-even"><td><p>estimated_woba_using_speedangle</p></td>
+<td><p>Estimated wOBA based on launch angle and exit velocity.</p></td>
+<td><p>float</p></td>
+</tr>
+<tr class="row-odd"><td><p>woba_value</p></td>
+<td><p>wOBA value based on result of play.</p></td>
+<td><p>float</p></td>
+</tr>
+<tr class="row-even"><td><p>woba_denom</p></td>
+<td><p>wOBA denominator based on result of play.</p></td>
+<td><p>float</p></td>
+</tr>
+<tr class="row-odd"><td><p>babip_value</p></td>
+<td><p>BABIP value based on result of play.</p></td>
+<td><p>float</p></td>
+</tr>
+<tr class="row-even"><td><p>iso_value</p></td>
+<td><p>ISO value based on result of play.</p></td>
+<td><p>float</p></td>
+</tr>
+<tr class="row-odd"><td><p>launch_speed_angle</p></td>
+<td><p>Launch speed/angle zone based on launch angle and exit velocity.</p></td>
+<td><p>float</p></td>
+</tr>
+<tr class="row-even"><td><p>at_bat_number</p></td>
+<td><p>Plate appearance number of the game.</p></td>
+<td><p>Int64</p></td>
+</tr>
+<tr class="row-odd"><td><p>pitch_number</p></td>
+<td><p>Total pitch number of the plate appearance.</p></td>
+<td><p>Int64</p></td>
+</tr>
+<tr class="row-even"><td><p>pitch_name</p></td>
+<td><p>The name of the pitch derived from the Statcast Data.</p></td>
+<td><p>str</p></td>
+</tr>
+<tr class="row-odd"><td><p>home_score</p></td>
+<td><p>Pre-pitch home score</p></td>
+<td><p>Int64</p></td>
+</tr>
+<tr class="row-even"><td><p>away_score</p></td>
+<td><p>Pre-pitch away score</p></td>
+<td><p>Int64</p></td>
+</tr>
+<tr class="row-odd"><td><p>bat_score</p></td>
+<td><p>Pre-pitch bat team score</p></td>
+<td><p>Int64</p></td>
+</tr>
+<tr class="row-even"><td><p>fld_score</p></td>
+<td><p>Pre-pitch field team score</p></td>
+<td><p>Int64</p></td>
+</tr>
+<tr class="row-odd"><td><p>post_home_score</p></td>
+<td><p>Post-pitch home score</p></td>
+<td><p>Int64</p></td>
+</tr>
+<tr class="row-even"><td><p>post_away_score</p></td>
+<td><p>Post-pitch away score</p></td>
+<td><p>Int64</p></td>
+</tr>
+<tr class="row-odd"><td><p>post_bat_score</p></td>
+<td><p>Post-pitch bat team score</p></td>
+<td><p>Int64</p></td>
+</tr>
+<tr class="row-even"><td><p>post_fld_score</p></td>
+<td><p>Post-pitch fielding team score</p></td>
+<td><p>Int64</p></td>
+</tr>
+<tr class="row-odd"><td><p>if_fielding_alignment</p></td>
+<td><p>Infield fielding alignment at the time of the pitch.</p></td>
+<td><p>str</p></td>
+</tr>
+<tr class="row-even"><td><p>of_fielding_alignment</p></td>
+<td><p>Outfield fielding alignment at the time of the pitch.</p></td>
+<td><p>str</p></td>
+</tr>
+<tr class="row-odd"><td><p>spin_axis</p></td>
+<td><p>The Spin Axis in the 2D X-Z plane in degrees from 0 to 360</p></td>
+<td><p>Int64</p></td>
+</tr>
+<tr class="row-even"><td><p>delta_home_win_exp</p></td>
+<td><p>The change in Win Expectancy before the Plate Appearance and after the Plate Appearance</p></td>
+<td><p>float</p></td>
+</tr>
+<tr class="row-odd"><td><p>delta_run_exp</p></td>
+<td><p>The change in Run Expectancy before the Pitch and after the Pitch</p></td>
+<td><p>float</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="glossary">
+<h2>Glossary<a class="headerlink" href="#glossary" title="Permalink to this headline">¶</a></h2>
+<section id="player-names">
+<h3>Player Names<a class="headerlink" href="#player-names" title="Permalink to this headline">¶</a></h3>
+<p>Players can be specified using their MLB ID (i.e. <code class="docutils literal notranslate"><span class="pre">477132</span></code>) or their full name as
+a string, separated by either a ‘+’ or a space (i.e. <code class="docutils literal notranslate"><span class="pre">&quot;Clayton</span> <span class="pre">Kershaw&quot;</span></code> or
+“Clayton+Kershaw”)</p>
+</section>
+<section id="pitch-types">
+<h3>Pitch Types<a class="headerlink" href="#pitch-types" title="Permalink to this headline">¶</a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 40%" />
+<col style="width: 60%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Pitch Code</p></th>
+<th class="head"><p>Pitch Name</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>FF</p></td>
+<td><p>4-Seam Fastball</p></td>
+</tr>
+<tr class="row-odd"><td><p>FT</p></td>
+<td><p>2-Seam Fastball</p></td>
+</tr>
+<tr class="row-even"><td><p>FC</p></td>
+<td><p>Cutter</p></td>
+</tr>
+<tr class="row-odd"><td><p>SI</p></td>
+<td><p>Sinker</p></td>
+</tr>
+<tr class="row-even"><td><p>FS</p></td>
+<td><p>Splitter</p></td>
+</tr>
+<tr class="row-odd"><td><p>SL</p></td>
+<td><p>Slider</p></td>
+</tr>
+<tr class="row-even"><td><p>CH</p></td>
+<td><p>Changeup</p></td>
+</tr>
+<tr class="row-odd"><td><p>CU</p></td>
+<td><p>Curveball</p></td>
+</tr>
+<tr class="row-even"><td><p>KC</p></td>
+<td><p>Knuckle Curve</p></td>
+</tr>
+<tr class="row-odd"><td><p>CS</p></td>
+<td><p>Slow Curve</p></td>
+</tr>
+<tr class="row-even"><td><p>KN</p></td>
+<td><p>Knuckleball</p></td>
+</tr>
+<tr class="row-odd"><td><p>FO</p></td>
+<td><p>Forkball</p></td>
+</tr>
+<tr class="row-even"><td><p>EP</p></td>
+<td><p>Eephus</p></td>
+</tr>
+<tr class="row-odd"><td><p>SC</p></td>
+<td><p>Screwball</p></td>
+</tr>
+<tr class="row-even"><td><p>IN</p></td>
+<td><p>Intentional Ball</p></td>
+</tr>
+<tr class="row-odd"><td><p>PO</p></td>
+<td><p>Pitch Out</p></td>
+</tr>
+<tr class="row-even"><td><p>AB</p></td>
+<td><p>Automatic Ball</p></td>
+</tr>
+<tr class="row-odd"><td><p>UN</p></td>
+<td><p>Unkown</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="pa-results">
+<h3>PA Results<a class="headerlink" href="#pa-results" title="Permalink to this headline">¶</a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 100%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Options</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>single</p></td>
+</tr>
+<tr class="row-odd"><td><p>double</p></td>
+</tr>
+<tr class="row-even"><td><p>triple</p></td>
+</tr>
+<tr class="row-odd"><td><p>home_run</p></td>
+</tr>
+<tr class="row-even"><td><p>field_out</p></td>
+</tr>
+<tr class="row-odd"><td><p>strikeout</p></td>
+</tr>
+<tr class="row-even"><td><p>strikeout_double_play</p></td>
+</tr>
+<tr class="row-odd"><td><p>walk</p></td>
+</tr>
+<tr class="row-even"><td><p>double_play</p></td>
+</tr>
+<tr class="row-odd"><td><p>field_error</p></td>
+</tr>
+<tr class="row-even"><td><p>grounded_into_double_play</p></td>
+</tr>
+<tr class="row-odd"><td><p>fielders_choice</p></td>
+</tr>
+<tr class="row-even"><td><p>fielders_choice_out</p></td>
+</tr>
+<tr class="row-odd"><td><p>batter_interference</p></td>
+</tr>
+<tr class="row-even"><td><p>catcher_interf</p></td>
+</tr>
+<tr class="row-odd"><td><p>caught_stealing_2b</p></td>
+</tr>
+<tr class="row-even"><td><p>caught_stealing_3b</p></td>
+</tr>
+<tr class="row-odd"><td><p>caught_stealing_home</p></td>
+</tr>
+<tr class="row-even"><td><p>force_out</p></td>
+</tr>
+<tr class="row-odd"><td><p>hit_by_pitch</p></td>
+</tr>
+<tr class="row-even"><td><p>intent_walk</p></td>
+</tr>
+<tr class="row-odd"><td><p>sac_bunt</p></td>
+</tr>
+<tr class="row-even"><td><p>sac_bunt_double_play</p></td>
+</tr>
+<tr class="row-odd"><td><p>sac_fly</p></td>
+</tr>
+<tr class="row-even"><td><p>sac_fly_double_play</p></td>
+</tr>
+<tr class="row-odd"><td><p>triple_play</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="game-types">
+<h3>Game Types<a class="headerlink" href="#game-types" title="Permalink to this headline">¶</a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 22%" />
+<col style="width: 78%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Code</p></th>
+<th class="head"><p>Name</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>R</p></td>
+<td><p>Regular Season</p></td>
+</tr>
+<tr class="row-odd"><td><p>PO</p></td>
+<td><p>Playoffs</p></td>
+</tr>
+<tr class="row-even"><td><p>F</p></td>
+<td><p>Wildcard</p></td>
+</tr>
+<tr class="row-odd"><td><p>D</p></td>
+<td><p>Division Series</p></td>
+</tr>
+<tr class="row-even"><td><p>L</p></td>
+<td><p>League Championship</p></td>
+</tr>
+<tr class="row-odd"><td><p>W</p></td>
+<td><p>World Series</p></td>
+</tr>
+<tr class="row-even"><td><p>S</p></td>
+<td><p>Spring Training</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="pitch-results">
+<h3>Pitch Results<a class="headerlink" href="#pitch-results" title="Permalink to this headline">¶</a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 100%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Options</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>automatic ball</p></td>
+</tr>
+<tr class="row-odd"><td><p>ball</p></td>
+</tr>
+<tr class="row-even"><td><p>blocked ball</p></td>
+</tr>
+<tr class="row-odd"><td><p>called strike</p></td>
+</tr>
+<tr class="row-even"><td><p>foul</p></td>
+</tr>
+<tr class="row-odd"><td><p>foul bunt</p></td>
+</tr>
+<tr class="row-even"><td><p>foul pitchout</p></td>
+</tr>
+<tr class="row-odd"><td><p>pitchout</p></td>
+</tr>
+<tr class="row-even"><td><p>hit by pitch</p></td>
+</tr>
+<tr class="row-odd"><td><p>intent ball</p></td>
+</tr>
+<tr class="row-even"><td><p>hit into play no out</p></td>
+</tr>
+<tr class="row-odd"><td><p>hit into play score</p></td>
+</tr>
+<tr class="row-even"><td><p>pitchout hit into play score</p></td>
+</tr>
+<tr class="row-odd"><td><p>missed bunt</p></td>
+</tr>
+<tr class="row-even"><td><p>foul tip</p></td>
+</tr>
+<tr class="row-odd"><td><p>swinging strike</p></td>
+</tr>
+<tr class="row-even"><td><p>swinging strike blocked</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="gameday-zones">
+<h3>Gameday Zones<a class="headerlink" href="#gameday-zones" title="Permalink to this headline">¶</a></h3>
+<a class="reference internal image-reference" href="_images/gameday_zones.png"><img alt="_images/gameday_zones.png" class="align-center" src="_images/gameday_zones.png" style="height: 500px;" /></a>
+</section>
+<section id="teams">
+<h3>Teams<a class="headerlink" href="#teams" title="Permalink to this headline">¶</a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 32%" />
+<col style="width: 19%" />
+<col style="width: 29%" />
+<col style="width: 19%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Team Name</p></th>
+<th class="head"><p>Abbreviation</p></th>
+<th class="head"><p>Stadium Name</p></th>
+<th class="head"><p>Stadium Code</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Arizona Diamondbacks</p></td>
+<td><p>ARI</p></td>
+<td><p>Chase Field</p></td>
+<td><p>15</p></td>
+</tr>
+<tr class="row-odd"><td><p>Atlanta Braves</p></td>
+<td><p>ATL</p></td>
+<td><p>Truist Park</p></td>
+<td><p>4705</p></td>
+</tr>
+<tr class="row-even"><td></td>
+<td><p>ATL-2016</p></td>
+<td><p>Turner Field</p></td>
+<td><p>16</p></td>
+</tr>
+<tr class="row-odd"><td><p>Baltimore Orioles</p></td>
+<td><p>BAL</p></td>
+<td><p>Oriole Park</p></td>
+<td><p>2</p></td>
+</tr>
+<tr class="row-even"><td><p>Boston Red Sox</p></td>
+<td><p>BOS</p></td>
+<td><p>Fenway Park</p></td>
+<td><p>3</p></td>
+</tr>
+<tr class="row-odd"><td><p>Chicago Cubs</p></td>
+<td><p>CHC</p></td>
+<td><p>Wrigley Field</p></td>
+<td><p>17</p></td>
+</tr>
+<tr class="row-even"><td><p>Cincinatti Reds</p></td>
+<td><p>CIN</p></td>
+<td><p>GABP</p></td>
+<td><p>2602</p></td>
+</tr>
+<tr class="row-odd"><td><p>Cleveland Indians</p></td>
+<td><p>CLE</p></td>
+<td><p>Progressive Field</p></td>
+<td><p>5</p></td>
+</tr>
+<tr class="row-even"><td><p>Colorado Rockies</p></td>
+<td><p>COL</p></td>
+<td><p>Coors Field</p></td>
+<td><p>19</p></td>
+</tr>
+<tr class="row-odd"><td><p>Chicago White Sox</p></td>
+<td><p>CWS</p></td>
+<td><p>Guaranteed Rate Fld</p></td>
+<td><p>4</p></td>
+</tr>
+<tr class="row-even"><td><p>Detroit Tigers</p></td>
+<td><p>DET</p></td>
+<td><p>Comerica Park</p></td>
+<td><p>2394</p></td>
+</tr>
+<tr class="row-odd"><td><p>Florida Marlins</p></td>
+<td><p>FLA-2011</p></td>
+<td><p>Hard Rock Stadium</p></td>
+<td><p>20</p></td>
+</tr>
+<tr class="row-even"><td><p>Houston Astros</p></td>
+<td><p>HOU</p></td>
+<td><p>Minute Maid Park</p></td>
+<td><p>2392</p></td>
+</tr>
+<tr class="row-odd"><td><p>Kansas City Royals</p></td>
+<td><p>KC</p></td>
+<td><p>Kauffman Stadium</p></td>
+<td><p>7</p></td>
+</tr>
+<tr class="row-even"><td><p>Los Angeles Dodgers</p></td>
+<td><p>LAD</p></td>
+<td><p>Dodger Stadium</p></td>
+<td><p>22</p></td>
+</tr>
+<tr class="row-odd"><td><p>Los Angeles Angels</p></td>
+<td><p>LAA</p></td>
+<td><p>Angel Stadium</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>Miami Marlins</p></td>
+<td><p>MIA</p></td>
+<td><p>Marlins Park</p></td>
+<td><p>4169</p></td>
+</tr>
+<tr class="row-odd"><td><p>Mikwaukee Brewers</p></td>
+<td><p>MIL</p></td>
+<td><p>Miller Park</p></td>
+<td><p>32</p></td>
+</tr>
+<tr class="row-even"><td><p>Minnesota Twins</p></td>
+<td><p>MIN</p></td>
+<td><p>Target Field</p></td>
+<td><p>3312</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>MIN-2009</p></td>
+<td><p>Metrodome</p></td>
+<td><p>8</p></td>
+</tr>
+<tr class="row-even"><td><p>New York Mets</p></td>
+<td><p>NYM</p></td>
+<td><p>Citi Field</p></td>
+<td><p>3289</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>NYM-2008</p></td>
+<td><p>Shea Stadium</p></td>
+<td><p>25</p></td>
+</tr>
+<tr class="row-even"><td><p>New York Yankees</p></td>
+<td><p>NYY</p></td>
+<td><p>Yankee Stadium</p></td>
+<td><p>3313</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>NYY-2008</p></td>
+<td><p>Yankee Stadium</p></td>
+<td><p>9</p></td>
+</tr>
+<tr class="row-even"><td><p>Oakland Athletics</p></td>
+<td><p>OAK</p></td>
+<td><p>Oakland Coliseum</p></td>
+<td><p>10</p></td>
+</tr>
+<tr class="row-odd"><td><p>Philadelphia Phillies</p></td>
+<td><p>PHI</p></td>
+<td><p>Citizens Bank Park</p></td>
+<td><p>2681</p></td>
+</tr>
+<tr class="row-even"><td><p>Pittsburgh Pirates</p></td>
+<td><p>PIT</p></td>
+<td><p>PNC Park</p></td>
+<td><p>31</p></td>
+</tr>
+<tr class="row-odd"><td><p>Sand Diego Padres</p></td>
+<td><p>SD</p></td>
+<td><p>Petco Park</p></td>
+<td><p>2680</p></td>
+</tr>
+<tr class="row-even"><td><p>Seattle Mariners</p></td>
+<td><p>SEA</p></td>
+<td><p>T-Mobile Park</p></td>
+<td><p>680</p></td>
+</tr>
+<tr class="row-odd"><td><p>San Franscisco Giants</p></td>
+<td><p>SF</p></td>
+<td><p>Oracle Park</p></td>
+<td><p>2395</p></td>
+</tr>
+<tr class="row-even"><td><p>St. Louis Cardinals</p></td>
+<td><p>STL</p></td>
+<td><p>Busch Stadium</p></td>
+<td><p>2889</p></td>
+</tr>
+<tr class="row-odd"><td><p>Tampa Bay Rays</p></td>
+<td><p>TB</p></td>
+<td><p>Tropicana Field</p></td>
+<td><p>12</p></td>
+</tr>
+<tr class="row-even"><td><p>Texas Rangers</p></td>
+<td><p>TEX</p></td>
+<td><p>Globe Life Field</p></td>
+<td><p>5325</p></td>
+</tr>
+<tr class="row-odd"><td></td>
+<td><p>TEX-2019</p></td>
+<td><p>Globe Life Park</p></td>
+<td><p>13</p></td>
+</tr>
+<tr class="row-even"><td><p>Toronto Blue Jays</p></td>
+<td><p>TOR</p></td>
+<td><p>Rogers Centre</p></td>
+<td><p>14</p></td>
+</tr>
+<tr class="row-odd"><td><p>Washington Nationals</p></td>
+<td><p>WSH</p></td>
+<td><p>Nationals Park</p></td>
+<td><p>3309</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="attack-zones">
+<h3>Attack Zones<a class="headerlink" href="#attack-zones" title="Permalink to this headline">¶</a></h3>
+<a class="reference internal image-reference" href="_images/attack_zones.png"><img alt="_images/attack_zones.png" class="align-center" src="_images/attack_zones.png" style="height: 500px;" /></a>
+</section>
+<section id="counts">
+<h3>Counts<a class="headerlink" href="#counts" title="Permalink to this headline">¶</a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 100%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Options</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>00</p></td>
+</tr>
+<tr class="row-odd"><td><p>01</p></td>
+</tr>
+<tr class="row-even"><td><p>02</p></td>
+</tr>
+<tr class="row-odd"><td><p>10</p></td>
+</tr>
+<tr class="row-even"><td><p>11</p></td>
+</tr>
+<tr class="row-odd"><td><p>12</p></td>
+</tr>
+<tr class="row-even"><td><p>20</p></td>
+</tr>
+<tr class="row-odd"><td><p>21</p></td>
+</tr>
+<tr class="row-even"><td><p>22</p></td>
+</tr>
+<tr class="row-odd"><td><p>30</p></td>
+</tr>
+<tr class="row-even"><td><p>31</p></td>
+</tr>
+<tr class="row-odd"><td><p>32</p></td>
+</tr>
+<tr class="row-even"><td><p>ahead</p></td>
+</tr>
+<tr class="row-odd"><td><p>even</p></td>
+</tr>
+<tr class="row-even"><td><p>behind</p></td>
+</tr>
+<tr class="row-odd"><td><p>2strikes</p></td>
+</tr>
+<tr class="row-even"><td><p>3balls</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="situations">
+<h3>Situations<a class="headerlink" href="#situations" title="Permalink to this headline">¶</a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 100%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Options</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Go Ahead run at plate</p></td>
+</tr>
+<tr class="row-odd"><td><p>Go Ahead run on base</p></td>
+</tr>
+<tr class="row-even"><td><p>Tying run at plate</p></td>
+</tr>
+<tr class="row-odd"><td><p>Tying run on base</p></td>
+</tr>
+<tr class="row-even"><td><p>Tying run on deck</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="quality-of-contact">
+<h3>Quality of Contact<a class="headerlink" href="#quality-of-contact" title="Permalink to this headline">¶</a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 29%" />
+<col style="width: 71%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>6</p></td>
+<td><p>Barrel</p></td>
+</tr>
+<tr class="row-odd"><td><p>5</p></td>
+<td><p>Solid Contact</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>Flare/Burner</p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p>Poorly/Under</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>Poorly/Topped</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>Poorly/Weak</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="if-alignment">
+<h3>IF Alignment<a class="headerlink" href="#if-alignment" title="Permalink to this headline">¶</a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 32%" />
+<col style="width: 68%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>Standard</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>Strategic</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>Shift</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="of-alignment">
+<h3>OF Alignment<a class="headerlink" href="#of-alignment" title="Permalink to this headline">¶</a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 80%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>Standard</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>Strategic</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>3 OF to one side of 2B</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>4th Outfielder</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="runners-on">
+<h3>Runners On<a class="headerlink" href="#runners-on" title="Permalink to this headline">¶</a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 24%" />
+<col style="width: 76%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>No Runners</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>RISP</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>Runner On Base</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>Runner On 1st</p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p>Runner On 2nd</p></td>
+</tr>
+<tr class="row-odd"><td><p>6</p></td>
+<td><p>Runner On 3rd</p></td>
+</tr>
+<tr class="row-even"><td><p>7</p></td>
+<td><p>Runner Not On 1st</p></td>
+</tr>
+<tr class="row-odd"><td><p>8</p></td>
+<td><p>Runner Not On 2nd</p></td>
+</tr>
+<tr class="row-even"><td><p>9</p></td>
+<td><p>Runner Not On 3rd</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="special-flags">
+<h3>Special Flags<a class="headerlink" href="#special-flags" title="Permalink to this headline">¶</a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 100%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Options</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>touch1 is putout</p></td>
+</tr>
+<tr class="row-odd"><td><p>touch1 is assist</p></td>
+</tr>
+<tr class="row-even"><td><p>touch1 is deflection</p></td>
+</tr>
+<tr class="row-odd"><td><p>touch1 is error</p></td>
+</tr>
+<tr class="row-even"><td><p>is hit into play basehit</p></td>
+</tr>
+<tr class="row-odd"><td><p>is hit into play hardhit</p></td>
+</tr>
+<tr class="row-even"><td><p>is bunt</p></td>
+</tr>
+<tr class="row-odd"><td><p>is last pitch</p></td>
+</tr>
+<tr class="row-even"><td><p>is launch angle sweetspot</p></td>
+</tr>
+<tr class="row-odd"><td><p>is nonpitcher pitcher</p></td>
+</tr>
+<tr class="row-even"><td><p>is remove bunts</p></td>
+</tr>
+<tr class="row-odd"><td><p>is starter batter</p></td>
+</tr>
+<tr class="row-even"><td><p>is non starter batter</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">pycobb</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#python-functions">Python Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#command-line-interface">Command Line Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#columns">Columns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#glossary">Glossary</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="index.html" title="previous chapter">Welcome</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2021, Ryan Byrne.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.0.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/documentation.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

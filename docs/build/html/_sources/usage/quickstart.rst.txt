@@ -1,0 +1,5 @@
+.. code-block:: python
+
+  import pycobb
+  pitches = pycobb.get(pitchers=['Clayton Kershaw'])
+  print(pitches)

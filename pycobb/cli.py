@@ -5,7 +5,7 @@ import matplotlib.dates as mdates
 
 def _get_arguments():
     parser = argparse.ArgumentParser(description="Get Pitch Data from Baseball Savant")
-    parser.add_argument('command', type=str, help="Command to be Run")
+    parser.add_argument('command', type=str, help="Command to be Run", choices=['run', 'update', 'test'])
     parser.add_argument('-s', '--save',dest='save',nargs=1, help="save data to a specified file path")
     parser.add_argument('-d',dest='date_range', nargs=2, help="range of dates to be searched i.e. 2021-05-03 2021-05-08")
     parser.add_argument(
@@ -29,8 +29,14 @@ def _get_arguments():
     parser.add_argument(
         '-c', dest='columns', nargs="+", help="Columns to return"
     )
+    parser.add_argument(
+        '--team', dest="team", help="Team code of pitcher"
+    )
+    parser.add_argument(
+        '--opp', dest="opponent", nargs=1, help="Team code of pitcher opponent"
+    )
     parser.add_argument('--print', dest='print', action='store_true', default=False, help="Print the dataframe when complete")
-    parser.add_argument('--plot', nargs='+')
+    parser.add_argument('--plot', dest='plot', nargs=2, metavar=("xaxis","yaxis"), help="Plot the values of two columns")
     return parser.parse_args(), parser
 
 def _plot(pitches=None, x_col=None, y_col=None, title="", groupby=None):
@@ -59,10 +65,14 @@ def main():
         [params.pop(key) for key in ['command', 'save', 'print', 'plot']]
         if all(x is None for x in params.values()):
             raise ValueError('Search cannot be empty')
+
+        # TODO: Get rid of 40000 pitch maximum
         pitches = get(**params)
+
         _ = print(pitches) if args.print else None
         _ = pitches.to_csv(args.save[0]) if args.save else None
         _ = _plot(pitches, *args.plot) if args.plot else None
+
         if pitches.shape[0] == 40000:
             print("\nWARNING: Baseball Savant limits queries to 40000 pitches. Try narrowing your search...\n")
 
@@ -70,18 +80,7 @@ def main():
         pass
 
     elif args.command == 'update':
-        url = 'https://raw.githubusercontent.com/chadwickbureau/register/master/data/people.csv'
-        r = requests.get(url)
-        df = pd.read_csv(io.StringIO(r.text), dtype=PLAYER_TYPES)
-        ignore = [  'mlb_managed_first', 'mlb_managed_last',  'col_managed_first',
-                    'col_managed_last', 'pro_umpired_first', 'pro_umpired_last',
-                    'mlb_umpired_first', 'mlb_umpired_last', 'pro_managed_first',
-                    'pro_managed_last', 'col_played_first', 'col_played_last',
-                    'pro_played_first', 'pro_played_last', 'key_npb','key_sr_nfl',
-                    'key_sr_nba','key_sr_nhl',
-        ]
-        df = df[df['mlb_played_first'].notna()].drop(ignore, axis='columns')
-        df.to_csv(f"{os.path.dirname(utils.__file__)}/players.csv")
+        update()
 
     else:
         raise parser.error(f"Invalid command: '{args.command}'")

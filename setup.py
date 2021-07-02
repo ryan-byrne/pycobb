@@ -6,7 +6,7 @@ with open(os.path.join(os.getcwd(), 'README.md'), encoding='utf-8') as f:
 
 setup(
     name = "pycobb",
-    version = "0.0.1",
+    version = "0.0.4",
     author = "Ryan Byrne",
     author_email = "ryan@byrne.es",
     keywords = "baseball savant sabermetrics pycobb",
