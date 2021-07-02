@@ -4,3 +4,4 @@ pycobb.egg*
 /env
 /build
 /dist
+example.py
