@@ -1,10 +1,10 @@
 Documentation
 =============
 
-.. module:: pycobb
-
 .. toctree::
  :maxdepth: 2
+
+.. module:: pycobb
 
 Python Functions
 ----------------
